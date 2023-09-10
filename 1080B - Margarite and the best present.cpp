@@ -1,19 +1,6 @@
-#include <bits/stdc++.h>
+#include <bits\stdc++.h>
 using namespace std;
-int maximum(vector<int> v)
-{
-    int maxx = 0, compare = v[0];
-
-    for (int i = 1; i < v.size(); i++)
-    {
-        if (v[i] > compare)
-        {
-            maxx = i;
-            compare = v[i];
-        }
-    }
-    return maxx;
-};
+#define ll long long
 
 int main()
 {
@@ -21,28 +8,28 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, k;
-        cin >> n >> k;
-        vector<int> v(n), result;
-        for (auto &x : v)
+        long long l, r, sum{};
+        cin >> l >> r;
+        bool b1 = (l % 2 == 0), b2 = (r % 2 == 0);
+        if (b1 && b2)
         {
-            cin >> x;
+            cout << fixed << l + (r - l) / 2 << endl;
         }
-        for (int i = 0; i < n; i++)
+        else if (b1 && !b2)
         {
-            int minus = v[i] / k;
-            v[i] -= k * minus;
+            double x = ceil(double(r - l) / 2) * -1;
+            cout.precision(0);
+            cout << fixed << x << endl;
         }
-        multimap<int, int> m;
-        int counter = 1;
-        for (int i = 0; i < n; i++)
+        else if (!b1 && !b2)
         {
-            m.emplace(v[i], counter++);
+            cout << fixed << -l - ((r - l) / 2) << endl;
         }
-        for (auto i : m)
+        else
         {
-            cout << i.second << " ";
+            double x = ceil(double(r - l) / 2);
+            cout.precision(0);
+            cout << fixed << x << endl;
         }
-        cout << endl;
     }
 }
