@@ -1,0 +1,9 @@
+int.TryParse(Console.ReadLine(), out int dis);
+var result = 0;
+for (int i = 5; i >= 1 && dis > 0; i--)
+{
+    result += dis / i;
+    dis %= i;
+
+}
+Console.WriteLine(result);
